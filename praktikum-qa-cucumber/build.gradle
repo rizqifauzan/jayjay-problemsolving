@@ -1,0 +1,59 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+ext {
+    cucumberVersion = '7.18.1'
+    seleniumVersion = '4.23.0'
+    junitVersion = '5.10.2'
+}
+
+dependencies {
+    testImplementation "io.cucumber:cucumber-java:${cucumberVersion}"
+    testImplementation "io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}"
+    testImplementation "org.junit.platform:junit-platform-suite:1.10.2"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testImplementation "org.seleniumhq.selenium:selenium-java:${seleniumVersion}"
+    testImplementation "io.github.bonigarcia:webdrivermanager:5.9.2"
+    testImplementation "org.assertj:assertj-core:3.26.0"
+    testRuntimeOnly "org.junit.platform:junit-platform-launcher"
+}
+
+test {
+    useJUnitPlatform()
+
+    // Diteruskan ke JVM test supaya DriverFactory bisa membacanya.
+    systemProperty 'headless', System.getProperty('headless', 'true')
+
+    // Opsional, untuk lingkungan yang tidak standar:
+    //   -DchromeBinary=/path/ke/chrome
+    //   -DchromeDriverPath=/path/ke/chromedriver
+    ['chromeBinary', 'chromeDriverPath'].each { propertyName ->
+        if (System.getProperty(propertyName)) {
+            systemProperty propertyName, System.getProperty(propertyName)
+        }
+    }
+
+    // Laporan Cucumber yang mudah dibaca peserta saat live session.
+    systemProperty 'cucumber.plugin',
+            'pretty, summary, html:build/reports/cucumber/report.html'
+    systemProperty 'cucumber.publish.quiet', 'true'
+
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+        exceptionFormat = 'full'
+        showStandardStreams = true
+    }
+
+    // Skenario yang gagal tidak boleh menghentikan skenario berikutnya.
+    ignoreFailures = false
+}
