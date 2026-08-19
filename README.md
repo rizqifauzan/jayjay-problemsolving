@@ -78,7 +78,7 @@ Ini **normal dan disengaja**:
 | `cart.feature`  | Semua HIJAU    | Exception ditelan catch kosong (Kasus 2) |
 
 Jangan diperbaiki dulu. Dua kondisi itu adalah bahan bedah saat
-live session.
+live session. Langkah perbaikannya ada di `LATIHAN.md`.
 
 Laporan HTML Cucumber ada di:
 
@@ -264,5 +264,8 @@ aplikasi lain dan pakai mode headless (default). Jangan tambahkan
 
 ## Dokumen lain di repo ini
 
-- `RUNSHEET.md` - panduan jalannya sesi 60 menit (untuk mentor)
-- `CHALLENGE.md` - tugas take-home untuk peserta
+- `LATIHAN.md` - lembar kerja peserta selama sesi. Buka ini saat
+  sesi berlangsung, isinya langkah demi langkah apa yang harus
+  kalian kerjakan.
+- `CHALLENGE.md` - tugas take-home setelah sesi
+- `RUNSHEET.md` - panduan jalannya sesi (untuk mentor)

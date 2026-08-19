@@ -10,6 +10,9 @@ JayJay Edukasi
 Tambahkan **satu feature file baru** untuk alur checkout di
 SauceDemo, lengkap dengan step definition dan Page Object-nya.
 
+Dua prinsip yang dipakai sama persis dengan yang kalian praktikkan
+di `LATIHAN.md`. Buka lagi kalau lupa.
+
 Syarat mutlak - keduanya adalah inti sesi kemarin:
 
 1. Setiap assertion harus **informatif**: saat gagal, pesannya
