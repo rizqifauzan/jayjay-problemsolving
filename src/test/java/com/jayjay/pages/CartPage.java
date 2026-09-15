@@ -35,4 +35,10 @@ public class CartPage {
     public By lokatorBadgeKeranjang() {
         return By.className("shopping_cart_badge");
     }
+
+    By lokatorBadgeKeranjang = By.className("shopping_cart_badge");
+
+    public String getBadge(){
+        return webDriver.findElement(lokatorBadgeKeranjang).getText();
+    }
 }

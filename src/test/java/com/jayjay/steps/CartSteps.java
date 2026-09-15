@@ -7,8 +7,9 @@ import com.jayjay.pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 /**
  * KASUS 2 (versi BEFORE).
@@ -41,17 +42,34 @@ public class CartSteps {
 
     @Then("jumlah pada badge keranjang adalah {string}")
     public void jumlahPadaBadgeKeranjangAdalah(String jumlahYangDiharapkan) {
-        try {
-            By lokatorBadgeSalahKetik =
-                    By.className("shopping_cart_bdge");
-            String jumlahSebenarnya =
-                    webDriver.findElement(lokatorBadgeSalahKetik).getText();
-
-            if (!jumlahSebenarnya.equals(jumlahYangDiharapkan)) {
-                throw new AssertionError("badge tidak sesuai");
-            }
-        } catch (Exception exceptionYangDitelan) {
-            // Sengaja dikosongkan pada versi BEFORE.
-        }
+        String jumlahSebenarnya = cartPage.getBadge();
+        assertThat(jumlahSebenarnya).as("Memeriksa jumlah pada badge keranjang")
+                .isEqualTo(jumlahYangDiharapkan);
     }
 }
+
+// angka biner tidak urut
+// urutkan dari kecil ke besar
+//
+
+// *
+// **
+// ***
+// ****
+// *****
+
+
+//     *
+//    **
+//   ***
+//  ****
+// *****
+
+
+//  *     *     *
+//   *    *    *
+//    *   *   *
+//     *  *  *
+//      * * *
+//       ***
+//        *

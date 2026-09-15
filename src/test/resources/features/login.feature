@@ -14,4 +14,4 @@ Feature: Login SauceDemo
   Scenario: Login gagal dengan user yang terkunci
     Given pengguna membuka halaman login SauceDemo
     When pengguna login dengan username "locked_out_user" dan password "secret_sauce"
-    Then pesan error memuat teks "Username and password do not match"
+    Then pesan error memuat teks "Epic sadface: Sorry, this user has been locked out."

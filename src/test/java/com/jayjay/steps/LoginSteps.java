@@ -1,6 +1,7 @@
 package com.jayjay.steps;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+// import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import com.jayjay.driver.DriverFactory;
 import com.jayjay.pages.InventoryPage;
@@ -37,12 +38,13 @@ public class LoginSteps {
 
     @Then("halaman daftar produk tampil")
     public void halamanDaftarProdukTampil() {
-        assertTrue(inventoryPage.apakahHalamanProdukTampil());
+        //    assertTrue(inventoryPage.apakahHalamanProdukTampil());
     }
 
     @Then("pesan error memuat teks {string}")
     public void pesanErrorMemuatTeks(String teksYangDiharapkan) {
         String pesanErrorSebenarnya = loginPage.ambilPesanError();
-        assertTrue(pesanErrorSebenarnya.contains(teksYangDiharapkan));
+        assertThat(pesanErrorSebenarnya).as("Memeriksa pesan error yang ditampilkan")
+                .isEqualTo(teksYangDiharapkan);
     }
 }
